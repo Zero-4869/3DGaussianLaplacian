@@ -11,6 +11,9 @@ dependencies:
   - scipy=1.10.1
   - pip
   - plyfile
+  - cmake
+  - gmp
+  - cgal
   - pip:
     - opencv-python
     - open3d
