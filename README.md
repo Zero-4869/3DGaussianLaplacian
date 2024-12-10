@@ -1,7 +1,8 @@
 # 3DGaussianLaplacian
 
-'''
+
 To install, run 
+```
 conda env create --file environment.yml
 
 # tetra-nerf for triangulation
@@ -14,4 +15,4 @@ cmake .
 # export CPATH=/usr/local/cuda-11.3/targets/x86_64-linux/include:$CPATH
 make 
 pip install -e .
-'''
+```
