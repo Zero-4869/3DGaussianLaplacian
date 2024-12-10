@@ -7,3 +7,4 @@ src
 run_heat.py
 run_shape_matching.py
 run_laplacian.py
+setup.py
