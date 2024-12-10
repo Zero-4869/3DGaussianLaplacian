@@ -7,6 +7,7 @@ git clone https://github.com/Zero-4869/3DGaussianLaplacian.git --recursive
 
 To install, run 
 ```
+cd 3DGaussianLaplacian
 conda env create --file environment.yml
 conda activate gaussian_laplacian
 
@@ -16,9 +17,9 @@ pip install submodules/diff-gaussian-rasterization
 pip install submodules/simple-knn/
 # tetra-nerf for triangulation
 cd submodules/tetra-triangulation
-conda install cmake
+<!-- conda install cmake
 conda install conda-forge::gmp
-conda install conda-forge::cgal
+conda install conda-forge::cgal -->
 cmake .
 # you can specify your own cuda path
 # export CPATH=/usr/local/cuda-11.3/targets/x86_64-linux/include:$CPATH
