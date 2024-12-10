@@ -1,8 +1,6 @@
 *.pyc
 extensions/build
 extensions/cpp/robust_laplacian_ext.egg-info
-deps/
-src/
 run_heat.py
 run_shape_matching.py
 run_laplacian.py
