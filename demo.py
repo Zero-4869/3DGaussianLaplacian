@@ -150,7 +150,7 @@ def main():
 
     points_at = gaussians_at.get_xyz.cpu().detach().numpy().astype(np.float32)
 
-    index_at = gaussians_at.get_opacity.cpu().detach().numpy().astype(np.float64).squeeze() > 0.5
+    index_at = gaussians_at.get_opacity.cpu().detach().numpy().astype(np.float64).squeeze() #> 0.5
 
     L_m, M_m = Laplacian_gaussian_mahalanobis_partial(gaussians_at, index_at)
     h_m, _ = compute_mean_curvature(L_m, M_m, points_at[index_at])
