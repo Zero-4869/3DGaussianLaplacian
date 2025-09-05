@@ -22,3 +22,8 @@ cd submodules/tetra-triangulation
 cd extensions
 pip install .
 ```
+
+To run the demo
+```
+python demo.py --path <path to the .ply file>
+```
