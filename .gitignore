@@ -5,3 +5,4 @@ run_heat.py
 run_shape_matching.py
 run_laplacian.py
 setup.py
+submodules/diff-gaussian-rasterization/build

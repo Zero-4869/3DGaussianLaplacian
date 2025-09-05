@@ -11,7 +11,7 @@ cd 3DGaussianLaplacian
 conda env create --file environment.yml
 conda activate gaussian_laplacian
 
-pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 -f https://download.pytorch.org/whl/torch_stable.html
+pip install torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 --index-url https://download.pytorch.org/whl/cu121 (or other versions)
 
 pip install submodules/diff-gaussian-rasterization
 pip install submodules/simple-knn/
