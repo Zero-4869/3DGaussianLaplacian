@@ -139,11 +139,11 @@ def Laplacian_gaussian_mahalanobis_partial(gaussians, index):
 
 def argparser_base():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--object", type=str, default="wolf0")
+    parser.add_argument("--path", type=str, help="path to the ply file")
     return parser.parse_args()
 
-def main():
-    path_at = f"data/point_cloud.ply"
+def main(args):
+    path_at = args.path 
 
     gaussians_at = GaussianModel(sh_degree=3)
     gaussians_at.load_ply(path_at)
@@ -165,4 +165,5 @@ def main():
     ps.show()
 
 if __name__ == "__main__":
-    main()
+    args = argparser_base()
+    main(args)
