@@ -16,7 +16,7 @@ pip install torch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 --index-url https
 pip install submodules/diff-gaussian-rasterization
 pip install submodules/simple-knn/
 # tetra-nerf for triangulation
-cd submodules/tetra-triangulation
+# cd submodules/tetra-triangulation
  
 # Extensions
 cd extensions
