@@ -1,6 +1,3 @@
-
-[submodule "deps/robust-laplacians-py"]
-	path = deps/robust-laplacians-py
-	url = https://github.com/nmwsharp/robust-laplacians-py.git
-
-	
+[submodule "submodules/robust-laplacian-gs"]
+	path = submodules/robust-laplacian-gs
+	url = https://github.com/Zero-4869/Robust-Laplacians-GS.git

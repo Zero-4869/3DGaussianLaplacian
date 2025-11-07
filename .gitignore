@@ -6,3 +6,5 @@ run_shape_matching.py
 run_laplacian.py
 setup.py
 submodules/diff-gaussian-rasterization/build
+submodules/diff-gaussian-rasterization/diff_gaussian_rasterization.egg-info
+extensions
