@@ -7,7 +7,7 @@ from tqdm import tqdm
 from scene import GaussianModel
 import robust_laplacian_bindings_ext as rlbe
 from utils.general_utils import build_scaling_rotation
-from extensions.utils import compute_norm
+from utile_laplacian.laplacian_utils import compute_norm
 import robust_laplacian
 
 def BFS(neighs):

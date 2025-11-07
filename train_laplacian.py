@@ -16,7 +16,8 @@ import cv2
 import torch
 import torchvision
 import random
-from extensions.utils import *
+from utils_laplacian.general_utils import *
+from utils_laplacian.laplacian_utils import *
 from random import randint
 from utils.loss_utils import l1_loss, ssim
 from gaussian_renderer import render, network_gui

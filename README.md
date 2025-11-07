@@ -19,7 +19,7 @@ pip install submodules/simple-knn/
 # cd submodules/tetra-triangulation
  
 # Extensions
-cd extensions
+cd submodules/robust-laplacian-gs
 pip install .
 ```
 

@@ -44,6 +44,41 @@ def Laplacian_gaussian(gaussians, index, N=30, N_eigs=100):
 
     return evals, evecs, M
 
+def laplacian_gaussian(gaussians, n_eig, tb_writer, iteration):
+    # read input
+    points = gaussians.get_xyz.detach().cpu().numpy()
+    
+    print("Total number of points = ", points.shape[0])
+    # if iteration >= 20000:
+    norms, (covs, S) = compute_norm(gaussians)
+
+    # opacity = gaussians.get_opacity.cpu().detach().numpy().astype(np.float64)
+    # points, norms = filter_points_opacity_cov(points, norms, opacity, S[..., 2], threshold_cov=3.77e-5)
+    # build point cloud laplacian
+    L, M = robust_laplacian.point_cloud_laplacian(points, 1e-5, 30)
+
+    # compute some eigens
+    evals, evecs = sla.eigsh(L, n_eig, M, sigma=1e-8)
+
+    # visualize
+    for i in range(n_eig):
+        tb_writer.add_scalar("Eigenvalue_pc_"+str(i), evals[i], iteration)
+
+def laplacian_gaussian2(gaussians, n_eig, tb_writer, iteration, mollify_factor=1e-5, n_neighbors=30):
+    points = gaussians.get_xyz.cpu().detach().numpy()
+    norms, (covs, S) = compute_norm(gaussians)
+    # if iteration >= 20000:
+    # opacity = gaussians.get_opacity.cpu().detach().numpy().astype(np.float64)
+    # points, norms = filter_points_opacity_cov(points, norms, opacity, S[..., 2], threshold_cov=3.77e-5)
+    L, M = rlbe.buildGaussianLaplacian(points, norms, S[..., 2:3], mollify_factor, n_neighbors)
+
+     # compute some eigens
+    evals, evecs = sla.eigsh(L, n_eig, M, sigma=1e-8)
+
+    # visualize
+    for i in range(n_eig):
+        tb_writer.add_scalar("Eigenvalue_gaussian_"+str(i), evals[i], iteration)
+
 def Laplacian_gaussian_mahalanobis(gaussians, index, N=30, use_normal = True, N_eigs = 100):
     '''
     Compute Gaussian laplacians using pre-computed normals, 
@@ -68,3 +103,37 @@ def Laplacian_gaussian_mahalanobis(gaussians, index, N=30, use_normal = True, N_
     evals, evecs = sla.eigsh(L, n_eig, M, sigma=1e-8)
 
     return evals, evecs, M
+
+def laplacian_gaussian_f_pc(gaussians, index, n_eig, tb_writer, iteration, mollify_factor=1e-5, n_neighbors=30):
+    points = gaussians.get_xyz.cpu().detach().numpy().astype(np.float64)
+
+    norms, (covs, S) = compute_norm(gaussians)
+
+    assert len(points) == len(norms)
+
+    # compute the spectrum
+    L, M = robust_laplacian.point_cloud_laplacian(points[index], 1e-5, 30)
+
+    # compute some eigens
+    evals, evecs = sla.eigsh(L, n_eig, M, sigma=1e-8)
+
+    # visualize
+    for i in range(n_eig):
+        tb_writer.add_scalar("Eigenvalue_ours(KNN)_"+str(i), evals[i], iteration)
+
+def laplacian_gaussian_f_g(gaussians, index, n_eig, tb_writer, iteration, mollify_factor=1e-5, n_neighbors=30):
+    points = gaussians.get_xyz.cpu().detach().numpy().astype(np.float64)
+
+    norms, (covs, S) = compute_norm(gaussians)
+
+    assert len(points) == len(norms)
+
+    # compute the spectrum
+    L, M = rlbe.buildGaussianLaplacian(points[index], norms[index], S[index][..., 2:3], 1e-5, 30)
+
+    # compute some eigens
+    evals, evecs = sla.eigsh(L, n_eig, M, sigma=1e-8)
+
+    # visualize
+    for i in range(n_eig):
+        tb_writer.add_scalar("Eigenvalue_ours(normal)_"+str(i), evals[i], iteration)
