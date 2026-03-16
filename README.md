@@ -40,10 +40,11 @@ pip install .
 ```
 
 ## Running
-To run the demo
+To start
 ```
 python demo.py --path <path to the .ply file>
 ```
+It computes the mean curvature by Laplace-Beltrami operator and visualize it in [Polyscope](https://github.com/nmwsharp/polyscope).
 
 ## Acknowledgements
 This project is built upon [Robust Laplacians](https://github.com/nmwsharp/robust-laplacians-py). The Gaussian Splatting is based on [PGSR](https://github.com/zju3dv/PGSR) and [GOF](https://github.com/autonomousvision/gaussian-opacity-fields). We thank all the authors for their great work and repos.
