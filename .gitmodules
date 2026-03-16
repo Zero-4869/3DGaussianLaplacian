@@ -1,3 +1,3 @@
-[submodule "submodules/robust-laplacian-gs"]
-	path = submodules/robust-laplacian-gs
+[submodule "submodules/Robust-Laplacians-GS"]
+	path = submodules/Robust-Laplacians-GS
 	url = https://github.com/Zero-4869/Robust-Laplacians-GS.git
