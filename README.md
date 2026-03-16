@@ -1,5 +1,6 @@
 # [3DV2026]Laplace-Beltrami Operator for Gaussian Splatting
-Hongyu Zhou, Zorah Lähner
+[Hongyu Zhou](zero-4869.github.io), [Zorah Lähner](https://geometryinml.cs.uni-bonn.de/team/zorah/)
+
 [Project Page](https://zero-4869.github.io/LBO4GS/)
 ![Teaser.png](assets/teaser.png){Curvature computed from the Laplace-Beltrami Operator using different methods}
 
