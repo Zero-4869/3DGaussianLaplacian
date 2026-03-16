@@ -1,6 +1,19 @@
-# 3DGaussianLaplacian
+# [3DV2026]Laplace-Beltrami Operator for Gaussian Splatting
+Hongyu Zhou, Zorah Lähner
+[Project Page](https://zero-4869.github.io/LBO4GS/)
+![Teaser.png](assets/teaser.png){Curvature computed from the Laplace-Beltrami Operator using different methods}
 
-To clone,
+## BibTeX
+```
+@article{zhou2025laplace,
+  title={Laplace-Beltrami Operator for Gaussian Splatting},
+  author={Zhou, Hongyu and L{\"a}hner, Zorah},
+  journal={arXiv preprint arXiv:2502.17531},
+  year={2025}
+}
+```
+
+## Installation
 ```
 git clone https://github.com/Zero-4869/3DGaussianLaplacian.git --recursive
 ```
@@ -23,7 +36,11 @@ cd submodules/robust-laplacian-gs
 pip install .
 ```
 
+## Running
 To run the demo
 ```
 python demo.py --path <path to the .ply file>
 ```
+
+## Acknowledgements
+This project is built upon [Robust Laplacians](https://github.com/nmwsharp/robust-laplacians-py). The Gaussian Splatting is based on [PGSR](https://github.com/zju3dv/PGSR) and [GOF](https://github.com/autonomousvision/gaussian-opacity-fields). We thank all the authors for their great work and repos.
