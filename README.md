@@ -7,11 +7,12 @@
 
 ## BibTeX
 ```
-@article{zhou2025laplace,
+@inproceedings{zhou2025laplace,
   title={Laplace-Beltrami Operator for Gaussian Splatting},
   author={Zhou, Hongyu and L{\"a}hner, Zorah},
-  journal={arXiv preprint arXiv:2502.17531},
-  year={2025}
+  booktitle={2026 International Conference on 3D Vision (3DV)},
+  year={2026},
+  organization={IEEE}
 }
 ```
 
