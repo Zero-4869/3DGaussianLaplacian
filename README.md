@@ -1,5 +1,5 @@
 # [3DV2026]Laplace-Beltrami Operator for Gaussian Splatting
-[Hongyu Zhou](zero-4869.github.io), [Zorah Lähner](https://geometryinml.cs.uni-bonn.de/team/zorah/)
+[Hongyu Zhou](https://zero-4869.github.io), [Zorah Lähner](https://geometryinml.cs.uni-bonn.de/team/zorah/)
 
 **<a href="https://zero-4869.github.io/LBO4GS/" style="text-decoration: none;">Project Page</a>**|**<a href="https://arxiv.org/pdf/2502.17531" style="text-decoration: none;">Paper</a>**
 ![Teaser.png](assets/teaser.png)
