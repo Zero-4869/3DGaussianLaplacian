@@ -2,7 +2,8 @@
 [Hongyu Zhou](zero-4869.github.io), [Zorah Lähner](https://geometryinml.cs.uni-bonn.de/team/zorah/)
 
 [Project Page](https://zero-4869.github.io/LBO4GS/)|[Paper](https://arxiv.org/pdf/2502.17531)
-![Teaser.png](assets/teaser.png "Curvature computed from the Laplace-Beltrami Operator using different methods")
+![Teaser.png](assets/teaser.png)
+*Figure 1. Curvature computed from the Laplace-Beltrami Operator using different methods*
 
 ## BibTeX
 ```
