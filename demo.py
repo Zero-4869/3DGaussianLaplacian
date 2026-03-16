@@ -159,7 +159,7 @@ def main(args):
     h_pc, _ = compute_mean_curvature(L_pc, M_pc, points_at[index_at])
 
     h_m = np.clip(h_m, 0, 1000)
-    h_pc = np.clip(h_pc, 0, 1000)
+    h_pc =np.clip(h_pc, 0, 1000)
 
     ps.init()
     pc_at = ps.register_point_cloud("pc_at", points_at[index_at], radius=0.003)
