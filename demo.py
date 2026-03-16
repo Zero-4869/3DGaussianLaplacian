@@ -7,7 +7,7 @@ from tqdm import tqdm
 from scene import GaussianModel
 import robust_laplacian_bindings_ext as rlbe
 from utils.general_utils import build_scaling_rotation
-from utile_laplacian.laplacian_utils import compute_norm
+from utils_laplacian.laplacian_utils import compute_norm
 import robust_laplacian
 
 def BFS(neighs):
@@ -150,13 +150,16 @@ def main(args):
 
     points_at = gaussians_at.get_xyz.cpu().detach().numpy().astype(np.float32)
 
-    index_at = gaussians_at.get_opacity.cpu().detach().numpy().astype(np.float64).squeeze() #> 0.5
+    index_at = gaussians_at.get_opacity.cpu().detach().numpy().astype(np.float64).squeeze() > 0.01
 
     L_m, M_m = Laplacian_gaussian_mahalanobis_partial(gaussians_at, index_at)
     h_m, _ = compute_mean_curvature(L_m, M_m, points_at[index_at])
 
     L_pc, M_pc = Laplacian_point_cloud(points_at[index_at])
     h_pc, _ = compute_mean_curvature(L_pc, M_pc, points_at[index_at])
+
+    h_m = np.clip(h_m, 0, 1000)
+    h_pc = np.clip(h_pc, 0, 1000)
 
     ps.init()
     pc_at = ps.register_point_cloud("pc_at", points_at[index_at], radius=0.003)
