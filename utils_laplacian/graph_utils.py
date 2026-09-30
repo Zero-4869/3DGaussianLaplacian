@@ -1,7 +1,7 @@
 import numpy as np
 from scene import GaussianModel
 import robust_laplacian_bindings_ext as rlbe
-from extensions.utils import compute_norm
+from general_utils import compute_norm
 from utils.general_utils import build_scaling_rotation
 
 

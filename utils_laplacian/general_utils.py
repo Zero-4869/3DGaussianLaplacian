@@ -1,6 +1,7 @@
-import numpy as np
-
 import torch
+import time
+import numpy as np
+from numpy.linalg import svd
 from utils.general_utils import build_rotation
 
 def projectPointOnPointCloud(point, pc):
