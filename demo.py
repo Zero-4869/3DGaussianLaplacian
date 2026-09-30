@@ -5,10 +5,10 @@ import pandas as pd
 import polyscope as ps
 from tqdm import tqdm
 from scene import GaussianModel
-import robust_laplacian_bindings_ext as rlbe
-from utils.general_utils import build_scaling_rotation
-from utils_laplacian.laplacian_utils import compute_norm
 import robust_laplacian
+import robust_laplacian_bindings_ext as rlbe
+from utils.general_utils import build_scaling_rotation, compute_norm
+
 
 def BFS(neighs):
     Npts = len(neighs)
