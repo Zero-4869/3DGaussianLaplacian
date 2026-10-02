@@ -1,4 +1,5 @@
 import numpy as np
+from tqdm import tqdm
 from scene import GaussianModel
 import robust_laplacian_bindings_ext as rlbe
 from general_utils import compute_norm
@@ -58,3 +59,28 @@ def GraphFiltration(gaussians, radiusNeigh = 80, nNeigh = 10):
             maximum_component = i
     index = np.where(cc == maximum_component)[0]
     return index
+
+def GraphFiltrationPartial(gaussians, index):
+    points = gaussians.get_xyz.cpu().detach().numpy().astype(np.float64)[index]
+    norms, (covs, S) = compute_norm(gaussians)
+    RT = build_scaling_rotation(gaussians.get_scaling, gaussians._rotation).detach().cpu().numpy()[index]
+    RT_inverse = np.linalg.inv(RT).astype(np.float64).reshape(-1, 9)
+    RT_inverse = RT_inverse / np.max(np.abs(RT_inverse), axis=1, keepdims=True)
+    assert RT_inverse.shape[0] == points.shape[0]
+
+    neighbors= rlbe.neighborhoodMahalanobis_bilateral(points, norms[index], RT_inverse, 1e-5, 100, 12)
+    Npts = neighbors.shape[0]
+    neighs = []
+    for i in range(Npts):
+        if neighbors[i][-1] == Npts:
+            N_neighbor = np.where(neighbors[i] == Npts)[0][0]
+            neighs.append(neighbors[i][:N_neighbor])
+        else:
+            neighs.append(neighbors[i])
+    cc = BFS(neighs)
+    N_components = np.zeros(np.max(cc)+1)
+    for i in tqdm(range(Npts)):
+        N_components[cc[i]] += 1
+    ordered_ids = np.argsort(np.array(N_components))
+    final_index = np.where((cc == ordered_ids[-1]))[0]
+    return index[final_index]
